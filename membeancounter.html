@@ -43,6 +43,13 @@
     width: 14.285714%;
     padding: 10px;
     text-align: center;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
   .btn {
      background-color: #7fa939;
@@ -71,6 +78,57 @@
     color: white;
     text-decoration: underline;
   }
+
+
+
+/* The actual popup */
+.column .popuptext {
+  visibility: hidden;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+  overflow: auto;
+  max-height: 300px;
+  width: 100%;
+}
+
+/* Popup arrow */
+.column .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.column .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
   </style>
   <title>Membean Word Finder</title>
 </head>
@@ -86,23 +144,29 @@
     <button type="submit" class="btn" id = "submit" ></button>
     <br>
     <br>
-    <div class="column" style="background-color:#f5f8f2;">
+    <div class="column" style="background-color:#f5f8f2;" onclick="myFunction()">
       Level 1: <p id="lvl1"></p>
+      <span class="popuptext" id="myPopup1"></span>
     </div>
-    <div class="column" style="background-color:#e2eada;">
+    <div class="column" style="background-color:#e2eada;" onclick="myFunction1()">
       Level 2: <p id="lvl2"></p>
+      <span class="popuptext" id="myPopup2"></span>
     </div>
-    <div class="column" style="background-color:#c2daa6;">
+    <div class="column" style="background-color:#c2daa6;" onclick="myFunction2()">
       Level 3: <p id="lvl3"></p>
+      <span class="popuptext" id="myPopup3"></span>
     </div>
-    <div class="column" style="background-color:#a1c979;">
+    <div class="column" style="background-color:#a1c979;" onclick="myFunction3()">
       Level 4: <p id="lvl4"></p>
+      <span class="popuptext" id="myPopup4"></span>
     </div>
-    <div class="column" style="background-color:#fda78e;">
+    <div class="column" style="background-color:#fda78e;" onclick="myFunction4()">
       Level 5: <p id="lvl5"></p>
+      <span class="popuptext" id="myPopup5"></span>
     </div>
-    <div class="column" style="background-color:#fc5a32;color: white;">
+    <div class="column" style="background-color:#fc5a32;color: white;" onclick="myFunction5()">
       Level 6: <p id="lvl6"></p>
+      <span class="popuptext" id="myPopup6"></span>
     </div>
     <div class="column" style="background-color: white;font-weight:bold;">
       Total: <p id="total"></p>
@@ -373,6 +437,7 @@
         }
         console.log(unique_array1)
         document.getElementById("lvl1").innerHTML = unique_array1.length;
+        document.getElementById("myPopup1").innerHTML = unique_array1.join(' ')
         for (var k = 0; k < membeanlvl1.length; k++){
           text = text.replace(new RegExp("\\b"+txtArray[wordLocation1[k]]+"\\b", 'g'),"<span class='highlight'>" + txtArray[wordLocation1[k]] + "</span>");
         }
@@ -394,6 +459,7 @@
         console.log(unique_array2)
         console.log(wordLocation2)
         document.getElementById("lvl2").innerHTML = unique_array2.length;
+        document.getElementById("myPopup2").innerHTML = unique_array2.join(' ')
         for (var d = 0; d < wordLocation2.length; d++){
           text = text.replace(new RegExp("\\b"+ txtArray[wordLocation2[d]] + "\\b", 'g'),"<span class='highlight1'>" + txtArray[wordLocation2[d]]  + "</span>");
         }
@@ -427,6 +493,7 @@
         }
         console.log(unique_array3)
         document.getElementById("lvl3").innerHTML = unique_array3.length;
+        document.getElementById("myPopup3").innerHTML = unique_array3.join(' ')
         for (var d = 0; d < wordLocation3.length; d++){
           text = text.replace(new RegExp("\\b"+txtArray[wordLocation3[d]]+"\\b", 'g'),"<span class='highlight2'>" + txtArray[wordLocation3[d]] + "</span>");
         }
@@ -451,6 +518,7 @@
         }
         console.log(unique_array4)
         document.getElementById("lvl4").innerHTML = unique_array4.length;
+        document.getElementById("myPopup4").innerHTML = unique_array4.join(' ')
         for (var d = 0; d < wordLocation4.length; d++){
           text = text.replace(new RegExp("\\b"+txtArray[wordLocation4[d]]+"\\b", 'g'),"<span class='highlight3'>" + txtArray[wordLocation4[d]] + "</span>");
         }
@@ -481,6 +549,7 @@
         console.log(unique_array5)
         console.log(wordLocation5)
         document.getElementById("lvl5").innerHTML = unique_array5.length;
+        document.getElementById("myPopup5").innerHTML = unique_array5.join(' ')
         for (var d = 0; d < wordLocation5.length; d++){
           text = text.replace(new RegExp("\\b"+txtArray[wordLocation5[d]]+"\\b", 'g'),"<span class='highlight4'>" + txtArray[wordLocation5[d]] + "</span>");
         }
@@ -504,6 +573,7 @@
         }
         console.log(unique_array6)
         document.getElementById("lvl6").innerHTML = unique_array6.length;
+        document.getElementById("myPopup6").innerHTML = unique_array6.join(' ')
         for (var d = 0; d < wordLocation6.length; d++){
           text = text.replace(new RegExp("\\b"+txtArray[wordLocation6[d]]+"\\b", 'g'),"<span class='highlight5'>" + txtArray[wordLocation6[d]] + "</span>");
         }
@@ -512,6 +582,32 @@
 
         document.getElementById("text").innerHTML = text
       }
+
+      function myFunction() {
+        var column = document.getElementById("myPopup1");
+        column.classList.toggle("show");
+      }
+      function myFunction1() {
+        var column = document.getElementById("myPopup2");
+        column.classList.toggle("show");
+      }
+      function myFunction2() {
+        var column = document.getElementById("myPopup3");
+        column.classList.toggle("show");
+      }
+      function myFunction3() {
+        var column = document.getElementById("myPopup4");
+        column.classList.toggle("show");
+      }
+      function myFunction4() {
+        var column = document.getElementById("myPopup5");
+        column.classList.toggle("show");
+      }
+      function myFunction5() {
+        var column = document.getElementById("myPopup6");
+        column.classList.toggle("show");
+      }
+
 
   </script>
 </body>
