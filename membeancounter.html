@@ -443,10 +443,16 @@
           unique_array1_url = unique_array1_url.replace(new RegExp("\\b"+unique_array1[u]+"\\b", 'g'),"<a href = " + url +" style = 'text-decoration:none;'>" + unique_array1[u] + "</a>");
         }
         document.getElementById("myPopup1").innerHTML = unique_array1_url
+        var unique_text1 = []
         for (var k = 0; k < membeanlvl1.length; k++){
-          url = "https://membean.com/mywords/" + membeanlvl1[k]
-          text = text.replace(new RegExp("\\b"+txtArray[wordLocation1[k]]+"\\b", 'g'),"<span class='highlight'><a href = " + url +" style = 'color:black; text-decoration:none;'>" + txtArray[wordLocation1[k]] + "</a></span>");
+          if(unique_text1.indexOf(stemmer(txtArray[wordLocation1[k]])) == -1){
+            url = "https://membean.com/mywords/" + membeanlvl1[k]
+            text = text.replace(new RegExp("\\b"+txtArray[wordLocation1[k]]+"\\b", 'g'),"<span class='highlight'><a href = " + url +" style = 'color:black; text-decoration:none;'>" + txtArray[wordLocation1[k]] + "</a></span>");
+            unique_text1.push(stemmer(txtArray[wordLocation1[k]]))
+          }
         }
+        console.log('Uniqe text 1')
+        console.log(unique_text1)
         for (var a = 0; a < txtArray.length; a++){
           if (txtArray[a].toLowerCase().substring(0,5) == "ameni") {
             membeanlvl2.push('amenity')
@@ -482,11 +488,15 @@
           unique_array2_url = unique_array2_url.replace(new RegExp("\\b"+unique_array2[u]+"\\b", 'g'),"<a href = " + url +" style = 'text-decoration:none;'>" + unique_array2[u] + "</a>");
         }
         document.getElementById("myPopup2").innerHTML = unique_array2_url
+        var unique_text2 = []
         for (var d = 0; d < wordLocation2.length; d++){
-          url = "https://membean.com/mywords/" + membeanlvl2[d]
-          text = text.replace(new RegExp("\\b"+ txtArray[wordLocation2[d]] + "\\b", 'g'),"<span class='highlight1'><a href = " + url + " style = 'color:black; text-decoration:none;'>" + txtArray[wordLocation2[d]]  + "</a></span>");
+          if(unique_text2.indexOf(stemmer(txtArray[wordLocation2[d]])) == -1){
+            url = "https://membean.com/mywords/" + membeanlvl2[d]
+            text = text.replace(new RegExp("\\b"+ txtArray[wordLocation2[d]] + "\\b", 'g'),"<span class='highlight1'><a href = '" + url + "' style = 'color:black; text-decoration:none;'>" + txtArray[wordLocation2[d]]  + "</a></span>");
+            unique_text2.push(stemmer(txtArray[wordLocation2[d]]))
+          }
         }
-
+        console.log(text)
 
 
         for (var a = 0; a < txtArray.length; a++){
@@ -528,9 +538,13 @@
           unique_array3_url = unique_array3_url.replace(new RegExp("\\b"+unique_array3[u]+"\\b", 'g'),"<a href = " + url +" style = 'text-decoration:none;'>" + unique_array3[u] + "</a>");
         }
         document.getElementById("myPopup3").innerHTML = unique_array3_url
+        var unique_text3 = []
         for (var d = 0; d < wordLocation3.length; d++){
-          url = "https://membean.com/mywords/" + membeanlvl3[d]
-          text = text.replace(new RegExp("\\b"+txtArray[wordLocation3[d]]+"\\b", 'g'),"<span class='highlight2'><a href = " + url +" style = 'color:black; text-decoration:none;'>" + txtArray[wordLocation3[d]] + "</a></span>");
+          if(unique_text3.indexOf(stemmer(txtArray[wordLocation3[d]])) == -1){
+            url = "https://membean.com/mywords/" + membeanlvl3[d]
+            text = text.replace(new RegExp("\\b"+txtArray[wordLocation3[d]]+"\\b", 'g'),"<span class='highlight2'><a href = " + url +" style = 'color:black; text-decoration:none;'>" + txtArray[wordLocation3[d]] + "</a></span>");
+            unique_text3.push(stemmer(txtArray[wordLocation3[d]]))
+          }
         }
 
 
@@ -559,9 +573,13 @@
           unique_array4_url = unique_array4_url.replace(new RegExp("\\b"+unique_array4[u]+"\\b", 'g'),"<a href = " + url +" style = 'text-decoration:none;'>" + unique_array4[u] + "</a>");
         }
         document.getElementById("myPopup4").innerHTML = unique_array4_url
+        var unique_text4 = []
         for (var d = 0; d < wordLocation4.length; d++){
-          url = "https://membean.com/mywords/" + membeanlvl4[d]
-          text = text.replace(new RegExp("\\b"+txtArray[wordLocation4[d]]+"\\b", 'g'),"<span class='highlight3'><a href = " + url +" style = 'color:black; text-decoration:none;'>" + txtArray[wordLocation4[d]] + "</a></span>");
+          if(unique_text4.indexOf(stemmer(txtArray[wordLocation4[d]])) == -1){
+            url = "https://membean.com/mywords/" + membeanlvl4[d]
+            text = text.replace(new RegExp("\\b"+txtArray[wordLocation4[d]]+"\\b", 'g'),"<span class='highlight3'><a href = " + url +" style = 'color:black; text-decoration:none;'>" + txtArray[wordLocation4[d]] + "</a></span>");
+            unique_text4.push(stemmer(txtArray[wordLocation4[d]]))
+          }
         }
 
 
@@ -596,9 +614,13 @@
           unique_array5_url = unique_array3_url.replace(new RegExp("\\b"+unique_array5[u]+"\\b", 'g'),"<a href = " + url +" style = 'text-decoration:none;'>" + unique_array5[u] + "</a>");
         }
         document.getElementById("myPopup5").innerHTML = unique_array5_url
+        var unique_text5 = []
         for (var d = 0; d < wordLocation5.length; d++){
-          url = "https://membean.com/mywords/" + membeanlvl5[d]
-          text = text.replace(new RegExp("\\b"+txtArray[wordLocation5[d]]+"\\b", 'g'),"<span class='highlight4'><a href = " + url +" style = 'color:black; text-decoration:none;'>" + txtArray[wordLocation5[d]] + "</a></span>");
+          if(unique_text5.indexOf(stemmer(txtArray[wordLocation5[d]])) == -1){
+            url = "https://membean.com/mywords/" + membeanlvl5[d]
+            text = text.replace(new RegExp("\\b"+txtArray[wordLocation5[d]]+"\\b", 'g'),"<span class='highlight4'><a href = " + url +" style = 'color:black; text-decoration:none;'>" + txtArray[wordLocation5[d]] + "</a></span>");
+            unique_text5.push(stemmer(txtArray[wordLocation5[d]]))
+          }
         }
 
 
@@ -626,9 +648,13 @@
           unique_array6_url = unique_array6_url.replace(new RegExp("\\b"+unique_array6[u]+"\\b", 'g'),"<a href = " + url +" style = 'text-decoration:none;'>" + unique_array6[u] + "</a>");
         }
         document.getElementById("myPopup6").innerHTML = unique_array6_url
+        var unique_text6 = []
         for (var d = 0; d < wordLocation6.length; d++){
-          url = "https://membean.com/mywords/" + membeanlvl6[d]
-          text = text.replace(new RegExp("\\b"+txtArray[wordLocation6[d]]+"\\b", 'g'),"<span class='highlight5'><a href = " + url +" style = 'text-decoration:none;'>" + txtArray[wordLocation6[d]] + "</a></span>");
+          if(unique_text6.indexOf(stemmer(txtArray[wordLocation6[d]])) == -1){
+            url = "https://membean.com/mywords/" + membeanlvl6[d]
+            text = text.replace(new RegExp("\\b"+txtArray[wordLocation6[d]]+"\\b", 'g'),"<span class='highlight5'><a href = " + url +" style = 'text-decoration:none;'>" + txtArray[wordLocation6[d]] + "</a></span>");
+            unique_text6.push(stemmer(txtArray[wordLocation6[d]]))
+          }
         }
         document.getElementById("total").innerHTML = unique_array6.length+unique_array5.length+unique_array4.length+unique_array3.length+unique_array2.length+unique_array1.length;
         document.getElementById("submit").innerHTML = "Submit Again"
