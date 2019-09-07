@@ -490,7 +490,7 @@
         document.getElementById("myPopup2").innerHTML = unique_array2_url
         var unique_text2 = []
         for (var d = 0; d < wordLocation2.length; d++){
-          if(unique_text2.indexOf(stemmer(txtArray[wordLocation2[d]])) == -1){
+          if(unique_text2.indexOf(stemmer(txtArray[wordLocation2[d]])) == -1 || unique_text2.indexOf("ameni") == -1){
             url = "https://membean.com/mywords/" + membeanlvl2[d]
             text = text.replace(new RegExp("\\b"+ txtArray[wordLocation2[d]] + "\\b", 'g'),"<span class='highlight1'><a href = '" + url + "' style = 'color:black; text-decoration:none;'>" + txtArray[wordLocation2[d]]  + "</a></span>");
             unique_text2.push(stemmer(txtArray[wordLocation2[d]]))
@@ -503,7 +503,7 @@
           if (txtArray[a].toLowerCase() == "impasse" || txtArray[a].toLowerCase() == "impasses") {
             membeanlvl3.push("impasse")
             wordLocation3.push(a)
-          } else if (txtArray[a].toLowerCase().substring(0,9) == "impassive") {
+          } else if (txtArray[a].toLowerCase().substring(0,8) == "impassiv") {
             membeanlvl3.push("impassive")
             wordLocation3.push(a)
           } else if (txtArray[a].toLowerCase().substring(0,7) == "dispara") {
@@ -540,7 +540,7 @@
         document.getElementById("myPopup3").innerHTML = unique_array3_url
         var unique_text3 = []
         for (var d = 0; d < wordLocation3.length; d++){
-          if(unique_text3.indexOf(stemmer(txtArray[wordLocation3[d]])) == -1){
+          if(unique_text3.indexOf(stemmer(txtArray[wordLocation3[d]])) == -1 || unique_text3.indexOf("impassiv") == -1 || unique_text3.indexOf("dispari") == -1){
             url = "https://membean.com/mywords/" + membeanlvl3[d]
             text = text.replace(new RegExp("\\b"+txtArray[wordLocation3[d]]+"\\b", 'g'),"<span class='highlight2'><a href = " + url +" style = 'color:black; text-decoration:none;'>" + txtArray[wordLocation3[d]] + "</a></span>");
             unique_text3.push(stemmer(txtArray[wordLocation3[d]]))
