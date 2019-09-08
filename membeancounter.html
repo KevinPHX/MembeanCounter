@@ -78,7 +78,14 @@
     color: white;
     text-decoration: underline;
   }
-
+  .emaillink {
+    color: white;
+    text-decoration: underline;
+  }
+  .wordlink {
+    color:black;
+    text-decoration: none;
+  }
 
 
 /* The actual popup */
@@ -182,7 +189,7 @@
             <br>
   </form>
   <footer>
-  <p>© 2018 <a href="mailto:kyin20@brophybroncos.org?cc=jdamaso@brophyprep.org" target="_top">Kevin Yin</a>, Brophy College Preparatory, Class of 2020</p>
+  <p>© 2018 <a href="mailto:kyin20@brophybroncos.org?cc=jdamaso@brophyprep.org" target="_top" class = 'emaillink' >Kevin Yin</a>, Brophy College Preparatory, Class of 2020</p>
   </footer>
 
   </div>
@@ -444,11 +451,13 @@
         }
         document.getElementById("myPopup1").innerHTML = unique_array1_url
         var unique_text1 = []
+        var unique_word1 = []
         for (var k = 0; k < membeanlvl1.length; k++){
-          if(unique_text1.indexOf(stemmer(txtArray[wordLocation1[k]])) == -1){
-            url = "https://membean.com/mywords/" + membeanlvl1[k]
-            text = text.replace(new RegExp("\\b"+txtArray[wordLocation1[k]]+"\\b", 'g'),"<span class='highlight'><a href = " + url +" style = 'color:black; text-decoration:none;'>" + txtArray[wordLocation1[k]] + "</a></span>");
+          if(unique_text1.indexOf(stemmer(txtArray[wordLocation1[k]])) == -1 || unique_word1.indexOf((txtArray[wordLocation1[k]])) == -1){
+            url = "https://membean.com/mywords/" + membeanlvl1[k].toUpperCase()
+            text = text.replace(new RegExp("\\b"+txtArray[wordLocation1[k]]+"\\b", 'g'),"<span class='highlight'><a href = " + url +" class = 'wordlink'>" + txtArray[wordLocation1[k]] + "</a></span>");
             unique_text1.push(stemmer(txtArray[wordLocation1[k]]))
+            unique_word1.push(txtArray[wordLocation1[k]])
           }
         }
         for (var a = 0; a < txtArray.length; a++){
@@ -487,13 +496,17 @@
         }
         document.getElementById("myPopup2").innerHTML = unique_array2_url
         var unique_text2 = []
+        var unique_word2 = []
         for (var d = 0; d < wordLocation2.length; d++){
-          if(unique_text2.indexOf(stemmer(txtArray[wordLocation2[d]])) == -1 || unique_text2.indexOf("ameni") == -1){
-            url = "https://membean.com/mywords/" + membeanlvl2[d]
-            text = text.replace(new RegExp("\\b"+ txtArray[wordLocation2[d]] + "\\b", 'g'),"<span class='highlight1'><a href = '" + url + "' style = 'color:black; text-decoration:none;'>" + txtArray[wordLocation2[d]]  + "</a></span>");
+          if(unique_text2.indexOf(stemmer(txtArray[wordLocation2[d]])) == -1 || unique_word2.indexOf((txtArray[wordLocation2[d]])) == -1){
+            url = "https://membean.com/mywords/" + membeanlvl2[d].toUpperCase()
+            text = text.replace(new RegExp("\\b"+ txtArray[wordLocation2[d]] + "\\b", 'g'),"<span class='highlight1'><a href = '" + url + "' class = 'wordlink'>" + txtArray[wordLocation2[d]]  + "</a></span>");
             unique_text2.push(stemmer(txtArray[wordLocation2[d]]))
+            unique_word2.push(txtArray[wordLocation2[d]])
           }
         }
+        console.log(unique_text2)
+        console.log(unique_word2)
         console.log(text)
 
 
@@ -504,7 +517,7 @@
           } else if (txtArray[a].toLowerCase().substring(0,8) == "impassiv") {
             membeanlvl3.push("impassive")
             wordLocation3.push(a)
-          } else if (txtArray[a].toLowerCase().substring(0,7) == "dispara") {
+          } else if (txtArray[a].toLowerCase().substring(0,8) == "disparat") {
             membeanlvl3.push("disparate")
             wordLocation3.push(a)
           } else if (txtArray[a].toLowerCase().substring(0,7) == "dispari") {
@@ -537,11 +550,13 @@
         }
         document.getElementById("myPopup3").innerHTML = unique_array3_url
         var unique_text3 = []
+        var unique_word3 = []
         for (var d = 0; d < wordLocation3.length; d++){
-          if(unique_text3.indexOf(stemmer(txtArray[wordLocation3[d]])) == -1 || unique_text3.indexOf("impassiv") == -1 || unique_text3.indexOf("dispari") == -1){
-            url = "https://membean.com/mywords/" + membeanlvl3[d]
-            text = text.replace(new RegExp("\\b"+txtArray[wordLocation3[d]]+"\\b", 'g'),"<span class='highlight2'><a href = " + url +" style = 'color:black; text-decoration:none;'>" + txtArray[wordLocation3[d]] + "</a></span>");
+          if(unique_text3.indexOf(stemmer(txtArray[wordLocation3[d]])) == -1 || unique_word3.indexOf((txtArray[wordLocation3[d]])) == -1){
+            url = "https://membean.com/mywords/" + membeanlvl3[d].toUpperCase()
+            text = text.replace(new RegExp("\\b"+txtArray[wordLocation3[d]]+"\\b", 'g'),"<span class='highlight2'><a href = " + url +" class = 'wordlink'>" + txtArray[wordLocation3[d]] + "</a></span>");
             unique_text3.push(stemmer(txtArray[wordLocation3[d]]))
+            unique_word3.push(txtArray[wordLocation3[d]])
           }
         }
 
@@ -572,11 +587,13 @@
         }
         document.getElementById("myPopup4").innerHTML = unique_array4_url
         var unique_text4 = []
+        var unique_word4 = []
         for (var d = 0; d < wordLocation4.length; d++){
-          if(unique_text4.indexOf(stemmer(txtArray[wordLocation4[d]])) == -1){
-            url = "https://membean.com/mywords/" + membeanlvl4[d]
-            text = text.replace(new RegExp("\\b"+txtArray[wordLocation4[d]]+"\\b", 'g'),"<span class='highlight3'><a href = " + url +" style = 'color:black; text-decoration:none;'>" + txtArray[wordLocation4[d]] + "</a></span>");
+          if(unique_text4.indexOf(stemmer(txtArray[wordLocation4[d]])) == -1 || unique_word4.indexOf((txtArray[wordLocation4[d]])) == -1){
+            url = "https://membean.com/mywords/" + membeanlvl4[d].toUpperCase()
+            text = text.replace(new RegExp("\\b"+txtArray[wordLocation4[d]]+"\\b", 'g'),"<span class='highlight3'><a href = " + url +" class = 'wordlink'>" + txtArray[wordLocation4[d]] + "</a></span>");
             unique_text4.push(stemmer(txtArray[wordLocation4[d]]))
+            unique_word4.push(txtArray[wordLocation4[d]])
           }
         }
 
@@ -613,11 +630,13 @@
         }
         document.getElementById("myPopup5").innerHTML = unique_array5_url
         var unique_text5 = []
+        var unique_word5 = []
         for (var d = 0; d < wordLocation5.length; d++){
-          if(unique_text5.indexOf(stemmer(txtArray[wordLocation5[d]])) == -1){
-            url = "https://membean.com/mywords/" + membeanlvl5[d]
-            text = text.replace(new RegExp("\\b"+txtArray[wordLocation5[d]]+"\\b", 'g'),"<span class='highlight4'><a href = " + url +" style = 'color:black; text-decoration:none;'>" + txtArray[wordLocation5[d]] + "</a></span>");
+          if(unique_text5.indexOf(stemmer(txtArray[wordLocation5[d]])) == -1 || unique_word5.indexOf((txtArray[wordLocation5[d]])) == -1){
+            url = "https://membean.com/mywords/" + membeanlvl5[d].toUpperCase()
+            text = text.replace(new RegExp("\\b"+txtArray[wordLocation5[d]]+"\\b", 'g'),"<span class='highlight4'><a href = " + url +" class = 'wordlink'>" + txtArray[wordLocation5[d]] + "</a></span>");
             unique_text5.push(stemmer(txtArray[wordLocation5[d]]))
+            unique_word5.push(txtArray[wordLocation5[d]])
           }
         }
 
@@ -647,11 +666,13 @@
         }
         document.getElementById("myPopup6").innerHTML = unique_array6_url
         var unique_text6 = []
+        var unique_word6 = []
         for (var d = 0; d < wordLocation6.length; d++){
-          if(unique_text6.indexOf(stemmer(txtArray[wordLocation6[d]])) == -1){
-            url = "https://membean.com/mywords/" + membeanlvl6[d]
+          if(unique_text6.indexOf(stemmer(txtArray[wordLocation6[d]])) == -1 || unique_word6.indexOf((txtArray[wordLocation6[d]])) == -1){
+            url = "https://membean.com/mywords/" + membeanlvl6[d].toUpperCase()
             text = text.replace(new RegExp("\\b"+txtArray[wordLocation6[d]]+"\\b", 'g'),"<span class='highlight5'><a href = " + url +" style = 'text-decoration:none;'>" + txtArray[wordLocation6[d]] + "</a></span>");
             unique_text6.push(stemmer(txtArray[wordLocation6[d]]))
+            unique_word6.push(txtArray[wordLocation6[d]])
           }
         }
         document.getElementById("total").innerHTML = unique_array6.length+unique_array5.length+unique_array4.length+unique_array3.length+unique_array2.length+unique_array1.length;
