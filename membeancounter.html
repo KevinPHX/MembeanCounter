@@ -147,7 +147,14 @@
   <h2 id="text-center">Enter text</h2>
   <form id="text-form">
     <textarea id = "text-input" class="form-control form-control-lg" rows="10" cols="50"></textarea>
-    <br>
+
+      <div style = "width: 95%;float: left;">
+        <p style = "float: right;" >Word Count: </p>
+      </div>
+      <div style = "float: right;" style = "width: 5%;">
+        <p id = "length" style = "float: right;"></p>
+      </div>
+
     <button type="submit" class="btn" id = "submit" ></button>
     <br>
     <br>
@@ -419,8 +426,17 @@
         var txtArray = text.split(/[\s.\s!\s?\s;\s:\s,\s"\s'\s(\s)\s-]+/);
         var stemmedArray = []
         for (var a = 0; a < txtArray.length; a++){
-          stemmedArray.push(stemmer(txtArray[a].toLowerCase()))
+            stemmedArray.push(stemmer(txtArray[a].toLowerCase()))
         }
+        var length = 0
+        for (var a = 0; a < txtArray.length; a++){
+            if (txtArray[a] != ""){
+              length = length+1
+            }
+        }
+
+        document.getElementById("length").innerHTML = length
+
         console.log(txtArray)
         for (var i = 0; i < txtArray.length; i++){
           for (var j = 0; j < level1.length; j++){
