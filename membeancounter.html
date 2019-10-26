@@ -135,6 +135,15 @@
   from {opacity: 0;}
   to {opacity:1 ;}
 }
+.main{
+  position: relative;
+}
+.main span{
+  color: grey;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
 
   </style>
   <title>Membean Word Finder</title>
@@ -146,15 +155,11 @@
   <h4 id = "splurg">Finds and Counts Your Membean Words!</h4>
   <h2 id="text-center">Enter text</h2>
   <form id="text-form">
-    <textarea id = "text-input" class="form-control form-control-lg" rows="10" cols="50"></textarea>
-
-      <div style = "width: 95%;float: left;">
-        <p style = "float: right;" >Word Count: </p>
-      </div>
-      <div style = "float: right;" style = "width: 5%;">
-        <p id = "length" style = "float: right;"></p>
-      </div>
-
+  <div class = "main">
+    <textarea id = "text-input" class="form-control form-control-lg" rows="10" cols="50"onkeyup="countWords(this);"></textarea>
+    <span id="wordNum">0</span>
+  </div>
+  <br>
     <button type="submit" class="btn" id = "submit" ></button>
     <br>
     <br>
@@ -434,8 +439,7 @@
               length = length+1
             }
         }
-
-        document.getElementById("length").innerHTML = length
+        document.getElementById("wordNum").innerHTML = length
 
         console.log(txtArray)
         for (var i = 0; i < txtArray.length; i++){
